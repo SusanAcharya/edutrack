@@ -1,0 +1,438 @@
+/* ========================================
+   EduTrack Design System — Warm Edition
+   ======================================== */
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Design Tokens --- */
+:root {
+  /* Neutrals (Warm Slate) */
+  --gray-950: #0a0f1e;
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+
+  /* Teal — Primary Accent */
+  --teal-700: #0f766e;
+  --teal-600: #0d9488;
+  --teal-500: #14b8a6;
+  --teal-400: #2dd4bf;
+  --teal-300: #5eead4;
+  --teal-200: #99f6e4;
+  --teal-100: #ccfbf1;
+  --teal-50: #f0fdfa;
+
+  /* Indigo — Secondary Accent */
+  --indigo-600: #4f46e5;
+  --indigo-500: #6366f1;
+  --indigo-400: #818cf8;
+  --indigo-100: #e0e7ff;
+  --indigo-50: #eef2ff;
+
+  /* Amber — Warning/Highlight */
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-400: #fbbf24;
+  --amber-100: #fef3c7;
+  --amber-50: #fffbeb;
+
+  /* Rose — Danger */
+  --rose-600: #e11d48;
+  --rose-500: #f43f5e;
+  --rose-100: #ffe4e6;
+  --rose-50: #fff1f2;
+
+  /* Sky — Info */
+  --sky-600: #0284c7;
+  --sky-500: #0ea5e9;
+  --sky-100: #e0f2fe;
+  --sky-50: #f0f9ff;
+
+  /* Violet */
+  --violet-600: #7c3aed;
+  --violet-500: #8b5cf6;
+  --violet-100: #ede9fe;
+
+  /* Semantic Colors */
+  --emerald-600: #059669;
+  --emerald-500: #10b981;
+  --emerald-400: #34d399;
+  --emerald-300: #6ee7b7;
+  --emerald-200: #a7f3d0;
+  --emerald-100: #d1fae5;
+  --emerald-50: #ecfdf5;
+
+  /* Compat aliases */
+  --navy-950: var(--gray-950);
+  --navy-900: var(--gray-900);
+  --navy-800: var(--gray-800);
+  --navy-700: var(--gray-700);
+  --navy-600: var(--gray-600);
+  --navy-500: var(--gray-500);
+  --navy-400: var(--gray-400);
+  --navy-300: var(--gray-300);
+  --navy-200: var(--gray-200);
+  --navy-100: var(--gray-100);
+  --navy-50: var(--gray-50);
+  --red-600: var(--rose-600);
+  --red-500: var(--rose-500);
+  --red-100: var(--rose-100);
+  --red-50: var(--rose-50);
+  --blue-600: var(--sky-600);
+  --blue-500: var(--sky-500);
+  --blue-100: var(--sky-100);
+  --blue-50: var(--sky-50);
+  --purple-600: var(--violet-600);
+  --purple-500: var(--violet-500);
+  --purple-100: var(--violet-100);
+  --amber-600: #d97706;
+
+  /* Surfaces */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f8f9fb;
+  --surface-tertiary: var(--gray-100);
+  --surface-dark: var(--gray-900);
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-inverse: #ffffff;
+  --text-link: var(--teal-600);
+
+  /* Borders */
+  --border-light: #e5e7eb;
+  --border-medium: var(--gray-300);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.05);
+  --shadow-teal: 0 4px 16px rgba(20, 184, 166, 0.2);
+  --shadow-teal-lg: 0 8px 28px rgba(20, 184, 166, 0.3);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #14b8a6, #0d9488);
+  --gradient-primary-vivid: linear-gradient(135deg, #2dd4bf, #0d9488);
+  --gradient-hero: linear-gradient(160deg, #111827 0%, #1f2937 50%, #134e4a 100%);
+  --gradient-cta: linear-gradient(160deg, #111827, #134e4a);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-xs: 0.75rem;
+  --font-sm: 0.8125rem;
+  --font-base: 0.9375rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 2rem;
+  --font-4xl: 2.5rem;
+  --font-5xl: 3.25rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --navbar-height: 60px;
+  --max-width: 1200px;
+}
+
+/* --- Base --- */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  background: var(--surface-secondary);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+#app {
+  position: relative;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--teal-500);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+}
+
+::selection {
+  background: var(--teal-200);
+  color: var(--teal-700);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* --- Lucide Icons --- */
+.lucide {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  stroke-width: 1.75;
+}
+
+.stat-icon .lucide,
+.trust-card-icon .lucide,
+.sidebar-link .lucide {
+  stroke-width: 1.5;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s var(--ease-out) both;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s var(--ease-out) both;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.4s var(--ease-out) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s var(--ease-out) both;
+}
+
+.stagger-1 {
+  animation-delay: 0.05s;
+}
+
+.stagger-2 {
+  animation-delay: 0.1s;
+}
+
+.stagger-3 {
+  animation-delay: 0.15s;
+}
+
+.stagger-4 {
+  animation-delay: 0.2s;
+}
+
+.stagger-5 {
+  animation-delay: 0.25s;
+}
+
+.stagger-6 {
+  animation-delay: 0.3s;
+}
+
+.stagger-7 {
+  animation-delay: 0.35s;
+}
+
+.stagger-8 {
+  animation-delay: 0.4s;
+}
